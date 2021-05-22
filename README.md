@@ -1,18 +1,20 @@
-# Exercise 4 - 
+# Exercise 8: Working with Geometric Objects
 
-YOUR NAME: (Please write your name here)
+This week we will practice how to create geometric objects using Shapely in Python. In the first set of problems (1-2) you will define your own functions for handling geometric objects. In the second set of problems (3-4), you will read in data from a file using Pandas and create geometries based on coordinate information in the input data. 
 
-STUDENT NUMBER: (Please write your student number here)
 
-The exercise for this week is meant to help you to understand functions and modules in Python.
-Below you have a series of problems in which you are asked to edit the python files and write the code necessary to produce the desired results.
+- **Exercise 8 is due by 7th of June at 9 am**.
 
-- **Exercise 4 is due by the start of the next lesson (9:00 am, 10 May 2021)**.
+## Note
+
+#### Solution code cells
+Fill in the parts saying "YOUR CODE HERE *"
+
+```
+# YOUR CODE HERE 1
+```
 
 ## Start working
 
-There are 3 problems in this week's exercise. 
-
-1. Problem 1 - Simple temperature calculator (3 points)
-2. Problem 2 - Temperature classifier (3 points)
-3. Problem 3 - Applying the classifier (4 points)
+ - [Problems 1 and 2 ](Exercise_1_problem_1_2.py)
+ - [Problems 3 and 4 ](Exercise_1_problem_3_4.py)
