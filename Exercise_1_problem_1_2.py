@@ -31,6 +31,8 @@ print(point1.geom_type)
 # Demonstrate the usage of your function; For example, create a line object with two points: `Point(45.2, 22.34)` & `Point(100.22, -3.20)` and store the result in a variable called `line1`:
 
 line1 = None
+# YOUR CODE HERE 3 to define two points and store the result in line1
+
 
 # CODE FOR TESTING YOUR SOLUTION
 print(line1)
