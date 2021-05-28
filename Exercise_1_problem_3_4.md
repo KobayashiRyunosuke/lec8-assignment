@@ -29,7 +29,7 @@ More information about the input data set is available at the Digital Geography 
 
 
 
-## Problem 3: Reading coordinates from a file and creating geometries (*5 points*) 
+## Problem 3: Reading coordinates from a file and creating geometries.
 
 In problem 3, our goal is to read in the data using Pandas and create two lists `orig_points`and `dest_points` that contain the origin points (based on columns `from_x` and `from_y`) and destination points (based on columns `to_x` and `to_y`) as Shapely objects.
 
