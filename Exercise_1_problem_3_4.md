@@ -141,7 +141,6 @@ This task continuous where we left in Problem 3. In this problem, the goal is to
 
 ```python
 # YOUR CODE HERE 5
-lines=[]
 ```
 
 ```python
