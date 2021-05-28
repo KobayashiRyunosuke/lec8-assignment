@@ -29,7 +29,7 @@ More information about the input data set is available at the Digital Geography 
 
 
 
-## Problem 3: Reading coordinates from a file and creating geometries 
+## Problem 3: Reading coordinates from a file and creating geometries (*5 points*) 
 
 In problem 3, our goal is to read in the data using Pandas and create two lists `orig_points`and `dest_points` that contain the origin points (based on columns `from_x` and `from_y`) and destination points (based on columns `to_x` and `to_y`) as Shapely objects.
 
@@ -40,7 +40,8 @@ In problem 3, our goal is to read in the data using Pandas and create two lists 
 
 
 ```python
-# YOUR CODE HERE 1 to read data
+#YOUR CODE HERE 1 to read the file
+import pandas as pd 
 ```
 
 
@@ -48,6 +49,7 @@ In problem 3, our goal is to read in the data using Pandas and create two lists 
 #Check how many rows and columns there are:
 data
 ```
+
 
 ```python
 # CODE FOR TESTING YOUR SOLUTION
@@ -59,8 +61,9 @@ print(data.head())
 2: Select the 4 columns that contain coordinate information (**'from_x'**, **'from_y'**, **'to_x'**, **'to_y'**) and store them in variable **`data`** (i.e. update the data -variable  to contain only these four columns).
 
 
+
 ```python
-# YOUR CODE HERE 2 to store coordinate information in data
+# YOUR CODE HERE 2 to set `data`
 ```
 
 
@@ -72,9 +75,8 @@ print(list(data.columns))
 3: Create two empty lists called **`orig_points`** and **`dest_points`**. We will store the shapely points in these lists in the next step.
 
 
-
 ```python
-# YOUR CODE HERE 3 to create two empty lists
+# YOUR CODE HERE 3 to define empty lists orig_points and dest_points
 ```
 
 
@@ -101,8 +103,8 @@ print('dest_points length:', len(dest_points))
 
 **Approach B (advanced):**
 - Apply the Shapely point constructor on each row all at once. 
-    - Define your own function and apply it on the dataframe (in practice, the function is applied on each row). 
-    - Alternatively, you can apply the Polygon constructor directly using a lambda function. 
+    - Define your own function and apply it on the dataframe (in practice, the function is applied on each row). See [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html) for help.
+    - Alternatively, you can apply the Polygon constructor directly using a lambda function, See hints e.g. [in here](https://towardsdatascience.com/apply-and-lambda-usage-in-pandas-b13a1ea037f7).
     - You can store the outputs either to new columns in the dataframe, or separate variables (Pandas Series objects)
 - Convert outputs into lists and assign as values for `orign_points` and `dest_points` lists (data type needs to be a list for the next steps!).
 
@@ -111,9 +113,9 @@ print('dest_points length:', len(dest_points))
 
 
 ```python
-# YOUR CODE HERE 4 to set orig_points and dest_points
+# YOUR CODE HERE 4 to append points in orig_points and dest_points
+from shapely.geometry import Point
 ```
-
 
 ```python
 # CODE FOR TESTING YOUR SOLUTION
@@ -127,8 +129,6 @@ assert len(orig_points) == len(data), "Number of origin points must be the same 
 assert len(dest_points) == len(data), "Number of destination points must be the same as number of rows in the original file"
 ```
 
-Remember to commit your code using git after each major change (for example, after solving each problem).
-
 ## Done!
 
 That's it. Now you are ready to continue for the final Problem 4.
@@ -139,13 +139,10 @@ This task continuous where we left in Problem 3. In this problem, the goal is to
    
 1: Create a list called `lines`
 
-
-
 ```python
-# YOUR CODE HERE 5 to define lines
+# YOUR CODE HERE 5
 lines=[]
 ```
-
 
 ```python
 # CODE FOR TESTING YOUR SOLUTION
@@ -158,15 +155,18 @@ print('lines length:', len(lines))
 
   - Alternative 1: You can take advantage of `range()` function and index values to access the values from two lists at the same time inside a for-loop.
      
-  - Alternative 2: You can use `zip()` function to iterate over many lists at the same time.
+  - Alternative 2: You can use `zip()` function to iterate over many lists at the same time. 
   
 2b: Add each LineString object into the `lines` -list you created before.
 
 
 
 ```python
-# YOUR CODE HERE 6 to append LinStrings into lines.
+# YOUR CODE HERE 6 to append LineString to lines
+#raise NotImplementedError()
+from shapely.geometry import LineString
 ```
+
 
 ```python
 # CODE FOR TESTING YOUR SOLUTION
@@ -179,8 +179,9 @@ assert len(lines) == len(data), "There should be as many lines as there are rows
 
   - Hint: You might want to iterate over the lines and update the total lenght on each iteration.
 
+
 ```python
-# YOUR CODE HERE 7 to calculate total length
+# YOUR CODE HERE 7 to find total length
 ```
 
 
@@ -198,28 +199,16 @@ print("Total length of all lines is", round(total_length, 2))
 
 You can copy and paste the codes you have written earlier into the functions. Below, you can find a code cell for testing your functions (you should get the same result as earler).
 
-**Note: avoid using the same variable names as earlier inside your functions!** Functions are often defined at the top of the script file, and now that we have them here at the very end you might accidentally alter an existing variable inside your functions. To avoid this, alter the variable names inside your own functions if you re-use code from this notebook. 
+**Note: avoid using the same variable names as earlier inside your functions!** Functions are often defined at the top of the script file (or jupyter notebook), and now that we have them here at the very end you might accidentally alter an existing variable inside your functions. To avoid this, alter the variable names inside your own functions if you re-use code from this notebook. 
 
 
 ```python
-# REPLACE THE ERROR BELOW WITH YOUR OWN CODE
-#raise NotImplementedError()
-def create_od_lines(orig_points,dest_points):
-    tlines=[]
-    for i in range(len(orig_points)):
-        tlines.append(LineString([orig_points[i],dest_points[i]]))
-    return tlines
-        
-def calculate_total_distance(lines):
-    total_length=0
-    for i in lines:
-        total_length+=i.length
-    return total_length
+# YOUR CODE HERE 8 to define create_od_lines() and calculate_total_distance()
 ```
 
 
 ```python
-# NON-EDITABLE CODE CELL FOR TESTING YOUR SOLUTION
+# CODE FOR TESTING YOUR SOLUTION
 
 # Use the functions
 # -----------------
@@ -232,9 +221,6 @@ tot_dist = calculate_total_distance(od_lines)
 
 print("Total distance", round(tot_dist,2))
 ```
-
-    Total distance 3148.57
-
 
 
 ## All done!
